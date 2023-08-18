@@ -22,6 +22,7 @@ class GlobalDatastoreForRedisStack(Stack):
 
     cfn_global_replication_group = aws_elasticache.CfnGlobalReplicationGroup(self, 'RedisGlobalReplicationGroup',
       members=[
+        #XXX: GlobalReplicationGroup cannot be created with multiple members
         aws_elasticache.CfnGlobalReplicationGroup.GlobalReplicationGroupMemberProperty(
           replication_group_id=global_datastore_primary_group_id,
           replication_group_region=cdk.Aws.REGION,
